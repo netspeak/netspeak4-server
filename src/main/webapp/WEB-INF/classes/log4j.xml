@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+
+	<appender name="jsp.appender" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="100MB" />
+		<param name="maxBackupIndex" value="100" />
+		<param name="File" value="/var/log/netspeak/netspeak4-jsp.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="query.api.appender" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="100MB" />
+		<param name="maxBackupIndex" value="100" />
+		<param name="File" value="/var/log/netspeak/netspeak4-query-api.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="query.web.appender" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="100MB" />
+		<param name="maxBackupIndex" value="100" />
+		<param name="File" value="/var/log/netspeak/netspeak4-query-web.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="error.appender" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="100MB" />
+		<param name="maxBackupIndex" value="100" />
+		<param name="File" value="/var/log/netspeak/netspeak4-error.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="org.apache.jasper.compiler.JspRuntimeContext">
+		<level value="info" />
+		<appender-ref ref="jsp.appender" />
+	</logger>
+
+	<logger name="org.apache.jasper.servlet.JspServlet">
+		<level value="info" />
+		<appender-ref ref="jsp.appender" />
+	</logger>
+
+	<logger name="org.netspeak.server.SearchServlet.api">
+		<level value="info" />
+  		<appender-ref ref="query.api.appender" />
+	</logger>
+
+	<logger name="org.netspeak.server.SearchServlet.web">
+		<level value="info" />
+  		<appender-ref ref="query.web.appender" />
+	</logger>
+
+	<logger name="org.netspeak.server.SearchServlet.err">
+		<level value="info" />
+  		<appender-ref ref="error.appender" />
+	</logger>
+
+</log4j:configuration>

@@ -1,0 +1,51 @@
+// Apply plugins
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'war'
+
+// Basic configuration and settings for all (sub-)projects
+allprojects {
+    group = 'org.netspeak'
+    version = '1.0'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // Set source file encoding
+    compileJava.options.encoding = "UTF-8"
+    compileTestJava.options.encoding = "UTF-8"
+    javadoc.options.encoding = 'UTF-8'
+
+    // Declare global dependencies
+    dependencies {
+        compile group: 'org.netspeak', name: 'netspeak4-application-java', version: '1.0'
+
+        providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+        
+        // DON'T DO THIS! I couldn't make it work with the webis repo, so this is only a tempoaray workaround
+        compile files('lib/log4j-1.2.15.jar') 
+    }
+}
+
+war {
+	archiveName 'netspeak4-server.war'
+}
+
+// Set POM definition
+project.ext.pomDef = {
+    name = 'Netspeak 4 server'
+    description = 'The server providing the Netspeak 4 web API'
+    url = 'http://netspeak.org'
+    //licenses {
+    //    license {
+    //        name = 'The Apache License, Version 2.0'
+    //        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    //    }
+    //}
+    organization {
+        name = 'Netspeak'
+        url = 'http://netspeak.org'
+    }
+}
+
+// Include Artifactory configuration
+apply from: 'artifactory.gradle'
