@@ -1,6 +1,5 @@
 // Apply plugins
 apply plugin: 'java'
-apply plugin: 'jacoco'
 apply plugin: 'war'
 
 // Basic configuration and settings for all (sub-)projects
@@ -20,9 +19,9 @@ allprojects {
         compile group: 'org.netspeak', name: 'netspeak4-application-java', version: '1.0'
 
         providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
-        
+
         // DON'T DO THIS! I couldn't make it work with the webis repo, so this is only a tempoaray workaround
-        compile files('lib/log4j-1.2.15.jar') 
+        compile files('lib/log4j-1.2.15.jar')
     }
 }
 
