@@ -1,5 +1,7 @@
 # Netspeak 4 server
 
+[![Actions Status](https://github.com/netspeak/netspeak4-server/workflows/Java%20CI%20with%20Gradle/badge.svg)](https://github.com/netspeak/netspeak4-server/actions)
+
 This project is the Netspeak 4 Tomcat server which provides the web API.
 
 
